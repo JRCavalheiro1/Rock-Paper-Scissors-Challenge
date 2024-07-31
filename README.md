@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors-Challenge
-An small project that simulates the rock paper scissors game with JS.
+A small project that simulates the rock paper scissors game with JS.
