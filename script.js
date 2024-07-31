@@ -14,6 +14,7 @@ function getHumanChoice(choice) {
 
 let computerScore = 0;
 let humanScore = 0;
+
 //playRound function will aplied the main rules of the game and 
 //check wether human choice is the same as computer's choice or all conditions that human wins. If they don't meet the conditions 
 //it represents the opposite result, so the computer wins.
