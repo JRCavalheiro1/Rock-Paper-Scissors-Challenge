@@ -2,13 +2,13 @@
 function getComputerChoice() {
     let choice = ['rock', 'paper', 'scissors'];
     let index = Math.floor(Math.random() * 3); //index takes a random integer value from 0 to 3
-    console.log( 'Computer choice: ' + choice[index])
+    console.log( 'Computer choice: ' + choice[index]);
     return choice[index].toLowerCase(); //return the string at the current index
 } 
 
 //return a human choice by paramater
 function getHumanChoice(choice) {
-    console.log('Human choice: ' + choice)
+    console.log('Human choice: ' + choice);
     return choice.toLowerCase();
 }
 
@@ -20,27 +20,28 @@ function playGame() {
     let computerPick;
 
     //playRound function will aplied the main rules of the game and 
-    //verify if human choice is equals to computer choice or all conditions that human wins. Case they no satisfied the conditions, 
+    //check wether human choice is the same as computer's choice or all conditions that human wins. If they don't meet the conditions 
     //it represents the opposite result, so the computer wins.
     function playRound(humanChoice, computerChoice) {
+        humanScore++;
         if(humanChoice === computerChoice) { 
+            humanScore--;
             console.log('no one wins');
         } else if(humanChoice === 'paper' && computerChoice === 'rock') {
-            humanScore++;
             console.log('human wins');
         } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-            humanScore++;
             console.log('human wins');
         } else if(humanChoice === 'scissors' && computerChoice === 'paper') {
-            humanScore++;
             console.log('human wins');
         } else {
+            humanScore--;
             computerScore++;
-            console.log('computer wins')
+            console.log('computer wins');
         }
         console.log(`Computer Score: ${computerScore} --- Human Score: ${humanScore}`);
     }
     
+    //
     for(let i=0; i < 5; i++) {
         userChoice = prompt("What is your play: rock, paper or scissors? ");
         humanPick = getHumanChoice(userChoice);
@@ -49,9 +50,9 @@ function playGame() {
     }
 
     if(computerScore > humanScore) {
-        console.log('Computer wins the game!')
+        console.log('Computer wins the game!');
     } else if (computerScore < humanScore) {
-        console.log('Human wins the game!')
+        console.log('Human wins the game!');
     } else {
         console.log('The game tied');
     }
