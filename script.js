@@ -12,37 +12,36 @@ function getHumanChoice(choice) {
     return choice.toLowerCase();
 }
 
-function playGame() {
-    let computerScore = 0;
-    let humanScore = 0;
+let computerScore = 0;
+let humanScore = 0;
+//playRound function will aplied the main rules of the game and 
+//check wether human choice is the same as computer's choice or all conditions that human wins. If they don't meet the conditions 
+//it represents the opposite result, so the computer wins.
+function playRound(humanChoice, computerChoice) {
+    humanScore++;
+    if(humanChoice === computerChoice) { 
+        humanScore--;
+        console.log('no one wins');
+    } else if(humanChoice === 'paper' && computerChoice === 'rock') {
+        console.log('human wins');
+    } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
+        console.log('human wins');
+    } else if(humanChoice === 'scissors' && computerChoice === 'paper') {
+        console.log('human wins');
+    } else {
+        humanScore--;
+        computerScore++;
+        console.log('computer wins');
+    }
+    console.log(`Computer Score: ${computerScore} --- Human Score: ${humanScore}`);
+}
+    
+function playGame(rounds) {
     let userChoice;
     let humanPick; 
     let computerPick;
 
-    //playRound function will aplied the main rules of the game and 
-    //check wether human choice is the same as computer's choice or all conditions that human wins. If they don't meet the conditions 
-    //it represents the opposite result, so the computer wins.
-    function playRound(humanChoice, computerChoice) {
-        humanScore++;
-        if(humanChoice === computerChoice) { 
-            humanScore--;
-            console.log('no one wins');
-        } else if(humanChoice === 'paper' && computerChoice === 'rock') {
-            console.log('human wins');
-        } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-            console.log('human wins');
-        } else if(humanChoice === 'scissors' && computerChoice === 'paper') {
-            console.log('human wins');
-        } else {
-            humanScore--;
-            computerScore++;
-            console.log('computer wins');
-        }
-        console.log(`Computer Score: ${computerScore} --- Human Score: ${humanScore}`);
-    }
-    
-    //
-    for(let i=0; i < 5; i++) {
+    for(let i=0; i < rounds; i++) {
         userChoice = prompt("What is your play: rock, paper or scissors? ");
         humanPick = getHumanChoice(userChoice);
         computerPick = getComputerChoice();
@@ -58,7 +57,7 @@ function playGame() {
     }
 }
 
-playGame();
+playGame(5);
 
 
 
