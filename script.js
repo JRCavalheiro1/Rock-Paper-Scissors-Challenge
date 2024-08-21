@@ -12,30 +12,78 @@ function getHumanChoice(choice) {
     return choice.toLowerCase();
 }
 
+
+
 let computerScore = 0;
 let humanScore = 0;
+
 //playRound function will aplied the main rules of the game and 
 //check wether human choice is the same as computer's choice or all conditions that human wins. If they don't meet the conditions 
 //it represents the opposite result, so the computer wins.
+
+const result = document.createElement("div");
+
+
 function playRound(humanChoice, computerChoice) {
     humanScore++;
     if(humanChoice === computerChoice) { 
         humanScore--;
         console.log('no one wins');
+        result.textContent = "No one wins this round"
+
     } else if(humanChoice === 'paper' && computerChoice === 'rock') {
         console.log('human wins');
+        result.textContent = "The Human wins this round"
+
     } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
         console.log('human wins');
+        result.textContent = "The Human wins this round"
+
     } else if(humanChoice === 'scissors' && computerChoice === 'paper') {
         console.log('human wins');
+        result.textContent = "The Human wins this round"
     } else {
         humanScore--;
         computerScore++;
         console.log('computer wins');
+        result.textContent = "The Computer wins this round"
     }
     console.log(`Computer Score: ${computerScore} --- Human Score: ${humanScore}`);
-}
     
+   if(humanScore == 5) {
+        result.textContent = `The human wins the game! Human Score: ${humanScore} ComputerScore: ${computerScore}`
+   } else if(computerScore == 5) {
+        result.textContent = `The computer wins the game! Human Score: ${humanScore} ComputerScore: ${computerScore}`
+   }
+   
+}
+ 
+const buttonRock = document.createElement("button");
+const buttonPaper = document.createElement("button");
+const buttonScissors = document.createElement("button");
+const div = document.querySelector("div");
+
+buttonRock.textContent = "Rock";
+buttonPaper.textContent = "Paper";
+buttonScissors.textContent = "Scissors";
+
+
+buttonRock.addEventListener("click", ()=> {
+    playRound(getHumanChoice("rock"), getComputerChoice());
+});
+buttonPaper.addEventListener("click", ()=> {
+    playRound(getHumanChoice("Paper"), getComputerChoice());
+});
+buttonScissors.addEventListener("click", ()=> {
+    playRound(getHumanChoice("Scissors"), getComputerChoice());
+});
+
+div.appendChild(buttonRock);
+div.appendChild(buttonPaper);
+div.appendChild(buttonScissors);
+div.appendChild(result);
+
+/*
 function playGame(rounds) {
     let userChoice;
     let humanPick; 
@@ -57,7 +105,9 @@ function playGame(rounds) {
     }
 }
 
-playGame(5);
+*/
+
+//playGame(5);
 
 
 
