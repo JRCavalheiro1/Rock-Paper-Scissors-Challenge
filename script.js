@@ -1,9 +1,9 @@
-//return a random choice: 'rock', 'paper' or 'scissors'
+//return a random computer choice
 function getComputerChoice() {
     let choice = ['rock', 'paper', 'scissors'];
-    let index = Math.floor(Math.random() * 3); //index takes a random integer value from 0 to 3
+    let index = Math.floor(Math.random() * 2); //index takes a random integer value
     console.log( 'Computer choice: ' + choice[index]);
-    return choice[index].toLowerCase(); //return the string at the current index
+    return choice[index].toLowerCase(); //return the current string
 } 
 
 //return a human choice by paramater
